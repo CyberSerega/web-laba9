@@ -7,20 +7,49 @@
 
 <body>
 <script>
-function toRpn(str)
+function ToPolish(str)
 {
-	symbols = str.split(' ');
-	let stack = [];
-	for (let i=0; i<array.length-1; i++)
-	{
-		if (isNumeric(symbols[i])) stack.push(Number(symbols[i]));
-		else if()
-	}
-	
+    let temp = str.split(' ');
+    let operands = [];
+	let x,y;
+    for(let i = 0; i < temp.length; i++)
+    {
+        switch(temp[i])
+        {
+            case "+":
+                let sum = 0;
+                 x =  operands.pop();
+				 y =  operands.pop();
+                    sum = x+y;
+                operands.push(sum);
+                break;
+            case "-":
+                 x =  operands.pop();
+				 y =  operands.pop();
+                let dif = x-y;
+                operands.push(dif);
+                break;
+            case "*":
+                let mult = 1;
+                 x =  operands.pop();
+				 y =  operands.pop();
+                mult = x*y;
+                operands.push(mult);
+                break;
+            case "/":
+                 x =  operands.pop();
+				 y =  operands.pop();
+				let div =x/y;
+                operands.push(div);
+                break;
+            default:
+                operands.push(parseInt(temp[i]));
+                break;
+        }
+    }
+    return operands.pop();
 }
-
-// test
-console.log(toRpn('1 + 2'));
+ console.log(ToPolish("2 2 + 2 *"));
 </script>
 </body>
 </html>
