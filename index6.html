@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+<title>№6</title>
+</head>
+
+<body>
+<script>
+function EqualTwoStrings(str1, str2)
+{
+	str2+="";
+	var len = str1.length;
+	if (len<str2.length)
+	{
+		len = str2.length;
+		let temp = str1;
+		str1=str2;
+		str2 = temp;
+	}
+	for (let i=0; i<str1.length; i++)
+	{
+		if (!str2.includes(str1[i])) 
+		{			
+			return false;
+		}
+	}
+	return true;
+}
+
+function EqualStrings()
+{
+	var res = true;
+	var i = 0;
+	var len = arguments.length;
+	while (res & i<arguments.length-1)
+	{
+		res = EqualTwoStrings(arguments[i],arguments[i+1])
+		i++;	
+	}
+	if (res) alert("Строки состоят из одинаковых символов");
+	else alert("Строки состоят из разных символов");
+}
+EqualStrings('кот','ток','окт');
+</script>
+</body>
+</html>
